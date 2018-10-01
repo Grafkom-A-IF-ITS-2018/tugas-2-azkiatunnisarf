@@ -213,6 +213,41 @@
         cubeVertexPositionBuffer.itemSize = 3
         cubeVertexPositionBuffer.numItems = 24
 
+        // Start of K Position
+        triangleVertexPositionBuffer = gl.createBuffer()
+        gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer)
+        var vertices = [
+            -1.0,2.0,0,
+            -1.0,-2.0,0,
+            -1.0,0.0,0,
+            1.0,-2.0,0,
+            -1.0,0.0,0,
+            1.0,2.0,0,
+            -1.0,0.0,0
+        ]
+
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
+        triangleVertexPositionBuffer.itemSize = 3
+        triangleVertexPositionBuffer.numItems = 7
+
+        // K Color
+        triangleVertexColorBuffer = gl.createBuffer()
+        gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexColorBuffer)
+        var colors = [
+          1.0, 0.0, 0.0, 1.0,
+          0.0, 1.0, 0.0, 1.0,
+          0.0, 0.0, 1.0, 1.0,
+          1.0, 0.0, 0.0, 1.0,
+          0.0, 1.0, 0.0, 1.0,
+          0.0, 1.0, 0.0, 1.0,
+          0.0, 1.0, 0.0, 1.0
+        ]
+
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW)
+        triangleVertexColorBuffer.itemSize = 4
+        triangleVertexColorBuffer.numItems = 7
+        //end of K
+
         /*
         // Cube Texture
         // CREATE A BUFFER for CUBE'S TEXTURE
@@ -336,6 +371,22 @@
         // ROTASI
         mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(xRot), [1, 0, 0])
         mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(yRot), [0, 1, 0])
+
+        //draw K start
+        //K
+        mat4.translate(mvMatrix, mvMatrix, [0.0, 1.5, -13.0])   //0.0, 1.6, -7.0
+        mvPushMatrix()
+        mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rTri), [0.0, 1.0, 0.0])
+        //mat4.rotateY(mvMatrix, mvMatrix, glMatrix.toRadian(rTri))
+        gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer)
+        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0)
+        gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexColorBuffer)
+        gl.vertexAttribPointer(shaderProgram.vertexColorAttribute, triangleVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0)
+        setMatrixUniforms()
+        gl.drawArrays(gl.LINE_LOOP, 0, triangleVertexPositionBuffer.numItems)
+        mvPopMatrix()
+        
+        //draw K end
         
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer)
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0)
