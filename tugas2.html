@@ -213,6 +213,23 @@
         cubeVertexPositionBuffer.itemSize = 3
         cubeVertexPositionBuffer.numItems = 24
 
+        //cube color
+        triangleVertexColorBuffer = gl.createBuffer()
+        gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexColorBuffer)
+        var colors = [
+          1.0, 0.0, 0.0, 1.0,
+          0.0, 1.0, 0.0, 1.0,
+          0.0, 0.0, 1.0, 1.0,
+          1.0, 0.0, 0.0, 1.0,
+          0.0, 1.0, 0.0, 1.0,
+          0.0, 1.0, 0.0, 1.0,
+          0.0, 1.0, 0.0, 1.0
+        ]
+
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW)
+        triangleVertexColorBuffer.itemSize = 4
+        triangleVertexColorBuffer.numItems = 7
+
         // Start of K Position
         triangleVertexPositionBuffer = gl.createBuffer()
         gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer)
