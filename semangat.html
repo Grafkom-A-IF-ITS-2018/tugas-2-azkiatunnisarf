@@ -206,7 +206,7 @@
         mvPopMatrix()
 
         //letter
-        mat4.translate(mvMatrix, mvMatrix, [1.3, -0.5, 0.3])  //1.6, -3.0, 1.0
+        mat4.translate(mvMatrix, mvMatrix, transLetter)  //1.6, -3.0, 1.0
         mvPushMatrix()
         mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rLetter), [0.0, 1.0, 0.0])
         //mat4.rotateX(mvMatrix, mvMatrix, glMatrix.toRadian(rLetter))
@@ -219,7 +219,7 @@
         mvPopMatrix()
       }
       var lastTime = 0
-      var bound = 4
+      var bound = 2
       var dirLetter=[]
       dirLetter[0] = 0.05*(Math.random()<0.5? 1: -1)
       dirLetter[1] = 0.05*(Math.random()<0.5? 1: -1)
