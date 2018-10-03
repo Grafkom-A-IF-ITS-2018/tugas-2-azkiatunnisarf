@@ -183,6 +183,7 @@
 
       var rCube = 0
       var rLetter = 0
+      var transLetter = [0.0, 0.0, 0.0]
 
       //gambar
       function drawScene() {
@@ -218,12 +219,30 @@
         mvPopMatrix()
       }
       var lastTime = 0
+      var bound = 4
+      var dirLetter=[]
+      dirLetter[0] = 0.05*(Math.random()<0.5? 1: -1)
+      dirLetter[1] = 0.05*(Math.random()<0.5? 1: -1)
+      dirLetter[2] = 0.05*(Math.random()<0.5? 1: -1)
+      var flag = 1
+
       function animate() {
         var timeNow = new Date().getTime()
         if (lastTime != 0) {
-          var elapsed = timeNow - lastTime
-          rCube += (90 * elapsed) / 1000.0
-          rLetter += (75 * elapsed) / 1000.0
+          var elapsed = timeNow - lastTime          
+          if (transLetter[0]>bound) {
+            dirLetter[0] *= -1
+            flag *= -1
+          }
+          if (transLetter[0]<-bound) {
+            dirLetter[0] *= -1
+            flag *= -1            
+          }
+          if (flag==-1) {
+            elapsed *= -1
+          }
+          rLetter += (500 * elapsed) / 1000.0
+          transLetter[0] += dirLetter[0]
         } 
         lastTime = timeNow
       }
