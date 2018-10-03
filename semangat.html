@@ -194,7 +194,7 @@
         //cube
         mat4.translate(mvMatrix, mvMatrix, [0.0, 1.5, -12.0])   //0.0, 1.6, -7.0
         mvPushMatrix()
-        mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rCube), [0.0, 1.0, 0.0])
+        mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rCube), [0.0, 0.0, 0.0])
         //mat4.rotateY(mvMatrix, mvMatrix, glMatrix.toRadian(rCube))
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer)
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0)
@@ -205,9 +205,9 @@
         mvPopMatrix()
 
         //letter
-        mat4.translate(mvMatrix, mvMatrix, [1.6, 8.0, 1.0])  //1.6, -3.0, 1.0
+        mat4.translate(mvMatrix, mvMatrix, [1.6, -3.0, 1.0])  //1.6, -3.0, 1.0
         mvPushMatrix()
-        mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rLetter), [1.0, 0.0, 0.0])
+        mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rLetter), [0.0, 1.0, 0.0])
         //mat4.rotateX(mvMatrix, mvMatrix, glMatrix.toRadian(rLetter))
         gl.bindBuffer(gl.ARRAY_BUFFER, letterVertexPositionBuffer)
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, letterVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0)
