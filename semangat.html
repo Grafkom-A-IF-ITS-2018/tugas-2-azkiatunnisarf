@@ -104,10 +104,10 @@
         gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix)
       }
 
-      var cubeVertexPositionBuffer
-      var cubeVertexColorBuffer
-      var letterVertexPositionBuffer
-      var letterVertexColorBuffer
+      var cubeVertexPositionBuffer;
+      var cubeVertexColorBuffer;
+      var letterVertexPositionBuffer;
+      var letterVertexColorBuffer;
 
       //bikin object//
 
@@ -181,8 +181,8 @@
       }
       //AKHIR HURUF
 
-      var rCube = 0
-      var rLetter = 0
+      var rCube = 0;
+      var rLetter = 0;
 
       //gambar
       function drawScene() {
@@ -192,7 +192,7 @@
         mat4.identity(mvMatrix)
 
         //cube
-        mat4.translate(mvMatrix, mvMatrix, [0.0, 1.5, -13.0])   //0.0, 1.6, -7.0
+        mat4.translate(mvMatrix, mvMatrix, [0.0, 1.5, -5.0])   //0.0, 1.6, -7.0
         mvPushMatrix()
         mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rTri), [0.0, 1.0, 0.0])
         //mat4.rotateY(mvMatrix, mvMatrix, glMatrix.toRadian(rTri))
