@@ -192,7 +192,7 @@
         mat4.identity(mvMatrix)
 
         //cube
-        mat4.translate(mvMatrix, mvMatrix, [0.0, 1.5, -13.0])   //0.0, 1.6, -7.0
+        mat4.translate(mvMatrix, mvMatrix, [0.0, 1.5, -12.0])   //0.0, 1.6, -7.0
         mvPushMatrix()
         mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rCube), [0.0, 1.0, 0.0])
         //mat4.rotateY(mvMatrix, mvMatrix, glMatrix.toRadian(rCube))
@@ -205,16 +205,16 @@
         mvPopMatrix()
 
         //letter
-        mat4.translate(mvMatrix, mvMatrix, [0.0, -5.0, -5.0])  //1.6, -3.0, 1.0
+        mat4.translate(mvMatrix, mvMatrix, [1.6, 8.0, 1.0])  //1.6, -3.0, 1.0
         mvPushMatrix()
         mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rLetter), [1.0, 0.0, 0.0])
         //mat4.rotateX(mvMatrix, mvMatrix, glMatrix.toRadian(rLetter))
-        gl.bindBuffer(gl.ARRAY_BUFFER, LetterVertexPositionBuffer)
-        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, LetterVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0)
-        gl.bindBuffer(gl.ARRAY_BUFFER, LetterVertexColorBuffer)
-        gl.vertexAttribPointer(shaderProgram.vertexColorAttribute, LetterVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0)
+        gl.bindBuffer(gl.ARRAY_BUFFER, letterVertexPositionBuffer)
+        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, letterVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0)
+        gl.bindBuffer(gl.ARRAY_BUFFER, letterVertexColorBuffer)
+        gl.vertexAttribPointer(shaderProgram.vertexColorAttribute, letterVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0)
         setMatrixUniforms()
-        gl.drawArrays(gl.LINE_LOOP, 0, LetterVertexPositionBuffer.numItems)
+        gl.drawArrays(gl.LINE_LOOP, 0, letterVertexPositionBuffer.numItems)
         mvPopMatrix()
       }
       var lastTime = 0
