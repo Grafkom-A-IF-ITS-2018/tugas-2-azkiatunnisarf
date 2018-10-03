@@ -104,10 +104,10 @@
         gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix)
       }
 
-      var cubeVertexPositionBuffer;
-      var cubeVertexColorBuffer;
-      var letterVertexPositionBuffer;
-      var letterVertexColorBuffer;
+      var cubeVertexPositionBuffer
+      var cubeVertexColorBuffer
+      var letterVertexPositionBuffer
+      var letterVertexColorBuffer
 
       //bikin object//
 
@@ -116,22 +116,22 @@
         cubeVertexPositionBuffer = gl.createBuffer()
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer)
         var vertices = [
-            -3.0, 3.0, -6.0,
-            3.0, 3.0, -6.0,
-            3.0, -3.0, 6.0,
-            -3.0, -3.0, 6.0,
-            -3.0, 3.0, -6.0,
-            -3.0, 3.0, -6.0,
-            3.0, 3.0, 6.0,
-            3.0, 3.0, 6.0,
-            3.0, 3.0, -6.0,
-            3.0, -3.0, -6.0,
-            3.0, -3.0, 6.0,
-            3.0, -3.0, 6.0,
-            -3.0, -3.0, -6.0,
-            -3.0, 3.0, -6.0,
-            -3.0, -3.0, 6.0,
-            -3.0, 3.0, 6.0
+            -1.8, 1.8, 3.6,
+            1.8, 1.8, 3.6,
+            1.8, -1.8, 3.6,
+            -1.8, -1.8, 3.6,
+            -1.8, 1.8, 3.6,
+            -1.8, 1.8, -3.6,
+            1.8, 1.8, -3.6,
+            1.8, 1.8, 3.6,
+            1.8, 1.8, -3.6,
+            1.8, -1.8, -3.6,
+            1.8, -1.8, 3.6,
+            1.8, -1.8, -3.6,
+            -1.8, -1.8, -3.6,
+            -1.8, 1.8, -3.6,
+            -1.8, -1.8, -3.6,
+            -1.8, 1.8, 3.6
         ];
 
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
@@ -144,7 +144,7 @@
 
         colors = [];
         for (var i=0; i < 16; i++) {
-            colors = colors.concat([0.5, 0.5, 1.0, 1.0]);
+            colors = colors.concat([0.0, 0.0, 0.0, 0.0]);
           }
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW)
         cubeVertexColorBuffer.itemSize = 4
@@ -181,8 +181,8 @@
       }
       //AKHIR HURUF
 
-      var rCube = 0;
-      var rLetter = 0;
+      var rCube = 0
+      var rLetter = 0
 
       //gambar
       function drawScene() {
@@ -192,10 +192,10 @@
         mat4.identity(mvMatrix)
 
         //cube
-        mat4.translate(mvMatrix, mvMatrix, [0.0, 1.5, -5.0])   //0.0, 1.6, -7.0
+        mat4.translate(mvMatrix, mvMatrix, [0.0, 1.5, -13.0])   //0.0, 1.6, -7.0
         mvPushMatrix()
-        mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rTri), [0.0, 1.0, 0.0])
-        //mat4.rotateY(mvMatrix, mvMatrix, glMatrix.toRadian(rTri))
+        mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rCube), [0.0, 1.0, 0.0])
+        //mat4.rotateY(mvMatrix, mvMatrix, glMatrix.toRadian(rCube))
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer)
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0)
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexColorBuffer)
